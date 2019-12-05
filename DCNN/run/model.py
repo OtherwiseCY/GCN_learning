@@ -30,6 +30,6 @@ class NodeClassDCNN(nn.Module):
         Z = P@X # bs*H*F
         embed = torch.tanh(Z*self.Wc)# bs*(H+1)*F
         embed = embed.view(embed.size(0), -1)
-        out = self.dense(embed)
+        out = torch.tanh(self.dense(embed))
         
         return out
